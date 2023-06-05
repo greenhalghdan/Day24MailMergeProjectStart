@@ -1,4 +1,15 @@
-#TODO: Create a letter using starting_letter.txt 
+#TODO: Create a letter using starting_letter.txt
+with open(r"./Input/Letters/starting_letter.txt", "r") as templateletter:
+    newletter = templateletter.read()
+    with open(r"./Input/Names/invited_names.txt") as names:
+        names = names.readlines()
+        for item in names:
+            name = item.strip("\n")
+            print(newletter)
+            newletterwithname = newletter.replace("[name]", name)
+            f = open(rf"./Output/ReadyToSend/letter_for_{name}.txt", mode="w")
+            f.write(newletterwithname)
+            f.close()
 #for each name in invited_names.txt
 #Replace the [name] placeholder with the actual name.
 #Save the letters in the folder "ReadyToSend".
